@@ -39,3 +39,33 @@ class Experience(CommonModel):
     # DateTimeField: saves Day/Month/Year/Hour/Min/Sec
     start = models.TimeField()
     end = models.TimeField()
+
+    description = models.TextField()
+
+    perks = models.ManyToManyField(
+        "experiences.Perk",
+    )
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class Perk(CommonModel):
+
+    """What is included on an Experience"""
+
+    name = models.CharField(
+        max_length=100,
+    )
+    details = models.CharField(
+        max_length=250,
+        blank=True,
+        null=True,  # act same as default = ""
+    )
+    explanation = models.TextField(
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self) -> str:
+        return self.name
