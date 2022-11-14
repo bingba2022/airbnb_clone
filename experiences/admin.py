@@ -14,12 +14,8 @@ class ExperienceAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    list_filter = (
-        "city",
-        "price",
-        "start",
-        "end",
-    )
+    # filtering based on a foreign key
+    list_filter = ("category",)
 
 
 @admin.register(Perk)
