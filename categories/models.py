@@ -23,7 +23,7 @@ class Category(CommonModel):
 
     def __str__(self) -> str:
         # 이렇게 하면 카테고리 고를때 rooms 인지 experience 인지 admin 패널에서 안 헷갈림
-        return f"{self.kind}: {self.name}"
+        return f"{self.kind.title()}: {self.name}"
 
     class Meta:
         verbose_name_plural = "Categories"
