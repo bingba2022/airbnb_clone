@@ -45,6 +45,15 @@ class Room(CommonModel):
         "rooms.Amenity",
     )
 
+    category = models.ForeignKey(
+        "categories.Category",
+        null=True,
+        blank=True,
+        # SET_NULL: make the category of experience 'NULL' if the categories in Category application is deleted
+        # CASCADE: delete the experience if the category is deleted
+        on_delete=models.SET_NULL,
+    )
+
     def __str__(self) -> str:
         return self.name
 
