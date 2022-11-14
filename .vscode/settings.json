@@ -2,5 +2,30 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "100"]
+  "python.formatting.blackArgs": ["--line-length", "100"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  }
+  "workbench.colorCustomizations": {
+    "terminal.background": "#1a1a1a",
+    "terminal.foreground": "#EA549F",
+    "terminal.name": "Aurelia",
+    "terminal.black": "#000000",
+    "terminal.blue": "#579BD5",
+    "terminal.brightBlack": "#797979",
+    "terminal.brightBlue": "#9CDCFE",
+    "terminal.brightCyan": "#2BC4E2",
+    "terminal.brightGreen": "#1AD69C",
+    "terminal.brightPurple": "#975EAB",
+    "terminal.brightRed": "#EB2A88",
+    "terminal.brightWhite": "#EAEAEA",
+    "terminal.brightYellow": "#e9ad95",
+    "terminal.cyan": "#00B6D6",
+    "terminal.green": "#4EC9B0",
+    "terminal.purple": "#714896",
+    "terminal.red": "#E92888",
+    "terminal.white": "#EAEAEA",
+    "terminal.yellow": "#CE9178"
+  }
+
 }
