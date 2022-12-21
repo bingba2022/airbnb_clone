@@ -23,6 +23,26 @@ class WordFilter(admin.SimpleListFilter):
             reviews
 
 
+class RatingFilter(admin.SimpleListFilter):
+    title = "Filter by ratings!"
+    parameter_name = "Rating"
+
+    def lookups(self, request, model_admin):
+        return [
+            ("good", "Good"),
+            ("bad", "Bad"),
+        ]
+
+    def queryset(self, request, reviews):
+        rating = request.GET.get("Rating")
+        if rating == "good":
+            return reviews.filter(rating__gte=3)
+        elif rating == "bad":
+            return reviews.filter(rating__lt=3)
+        else:
+            reviews
+
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
@@ -34,6 +54,7 @@ class ReviewAdmin(admin.ModelAdmin):
 
     list_filter = (
         WordFilter,
+        RatingFilter,
         "rating",
         "user__is_host",  # filtering a review based on a foreign key
         "room__category",
