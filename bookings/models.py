@@ -21,6 +21,7 @@ class Booking(CommonModel):
     user = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
+        related_name="bookings",
     )
     # one room can have many bookings but A booking can have one room
     room = models.ForeignKey(
@@ -28,6 +29,7 @@ class Booking(CommonModel):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,  # we still want to keep the record
+        related_name="bookings",
     )
 
     # same as room
@@ -36,6 +38,7 @@ class Booking(CommonModel):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,  # we still want to keep the record
+        related_name="bookings",
     )
 
     check_in = models.DateField(

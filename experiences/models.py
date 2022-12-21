@@ -26,6 +26,7 @@ class Experience(CommonModel):
         "users.User",
         # when the user deletes their account, it deletes the experience as well
         on_delete=models.CASCADE,
+        related_name="experiences",
     )
 
     price = models.PositiveBigIntegerField()
@@ -44,6 +45,7 @@ class Experience(CommonModel):
 
     perks = models.ManyToManyField(
         "experiences.Perk",
+        related_name="experiences",
     )
 
     category = models.ForeignKey(
@@ -53,6 +55,7 @@ class Experience(CommonModel):
         # SET_NULL: make the category of experience 'NULL' if the categories in Category application is deleted
         # CASCADE: delete the experience if the category is deleted
         on_delete=models.SET_NULL,
+        related_name="experiences",
     )
 
     def __str__(self) -> str:

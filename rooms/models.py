@@ -39,10 +39,12 @@ class Room(CommonModel):
     owner = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
+        related_name="rooms",
     )
 
     amenities = models.ManyToManyField(
         "rooms.Amenity",
+        related_name="rooms",
     )
 
     category = models.ForeignKey(
@@ -52,6 +54,7 @@ class Room(CommonModel):
         # SET_NULL: make the category of experience 'NULL' if the categories in Category application is deleted
         # CASCADE: delete the experience if the category is deleted
         on_delete=models.SET_NULL,
+        related_name="rooms",
     )
 
     def __str__(self) -> str:

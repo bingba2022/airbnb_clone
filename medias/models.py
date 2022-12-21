@@ -16,6 +16,7 @@ class Photo(CommonModel):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+        related_name="photos",
     )
 
     experience = models.ForeignKey(
@@ -23,6 +24,7 @@ class Photo(CommonModel):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+        related_name="photos",
     )
 
     def __str__(self) -> str:
@@ -34,6 +36,7 @@ class Video(CommonModel):
     experience = models.OneToOneField(
         "experiences.Experience",
         on_delete=models.CASCADE,
+        related_name="videos",
     )
     # Foreign Key VS OneToOneField
     # Foreign Key: Can create many photos and all those photos belongs to a same room

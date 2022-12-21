@@ -16,10 +16,13 @@ class Wishlist(CommonModel):
     )
     experiences = models.ManyToManyField(  # wishlist can have many experiences
         "experiences.Experience",
+        related_name="wishlists",
     )
 
     user = models.ForeignKey(  # one to many or many to one
-        "users.User", on_delete=models.CASCADE  # wishlist is deleted when user deletes an account
+        "users.User",
+        on_delete=models.CASCADE,  # wishlist is deleted when user deletes an account
+        related_name="wishlists",
     )
 
     def __str__(self) -> str:
