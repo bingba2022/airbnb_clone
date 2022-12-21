@@ -4,9 +4,20 @@ from .models import Room, Amenity
 # Register your models here.
 
 
+@admin.action(description="Set all prices to zero")
+def reset_prices(model_admin, request, rooms):
+    # model_admin: model that has the action
+    # request: has information about who is calling this action
+    # queryset: list of all the object that I selected
+
+    for room in rooms.all():
+        room.price = 0
+        room.save()
+
+
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
-
+    actions = (reset_prices,)
     # filter list:
     list_display = (
         "name",
@@ -28,6 +39,14 @@ class RoomAdmin(admin.ModelAdmin):
         "toilets",
         "pet_friendly",
         "kind",
+    )
+
+    search_fields = (
+        # ^ : starts with
+        # = : exact
+        "name",
+        "price",
+        "=owner__username",  # search by owner's username
     )
 
 
