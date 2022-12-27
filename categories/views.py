@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import CategorySerializer
 from rest_framework.exceptions import NotFound
+from rest_framework.status import HTTP_204_NO_CONTENT
 
 # from django.core import serializers
 # from django.http import JsonResponse
@@ -11,7 +12,7 @@ from rest_framework.exceptions import NotFound
 
 # Create your views here.
 
-
+# /category
 @api_view(["GET", "POST"])
 def categories(request):
 
@@ -30,7 +31,8 @@ def categories(request):
             return Response(serializer.errors)
 
 
-@api_view(["GET", "PUT"])
+# /category/[category_id]
+@api_view(["GET", "PUT", "DELETE"])
 def category(request, pk):
     try:  # 1. get the category
         category = Category.objects.get(pk=pk)
@@ -48,9 +50,12 @@ def category(request, pk):
             data=request.data,
             partial=True,  # telling that we are just editing the data not creating
         )
-
         if serializer.is_valid():
             updated_category = serializer.save()
             return Response(CategorySerializer(updated_category).data)
         else:
             return Response(serializer.errors)
+
+    elif request.method == "DELETE":
+        category.delete()
+        return Response(status=HTTP_204_NO_CONTENT)
