@@ -17,7 +17,10 @@ from rest_framework.views import APIView
 class Categories(APIView):
     def get(self, request):
         all_categories = Category.objects.all()
-        serializer = CategorySerializer(all_categories, many=True)
+        serializer = CategorySerializer(
+            all_categories,
+            many=True,
+        )
         return Response(serializer.data)
 
     def post(self, request):
@@ -40,6 +43,7 @@ class CategoryDetail(APIView):
 
     def get(self, request, pk):
         serializer = CategorySerializer(self.get_object(pk))
+        print(serializer)
         return Response(serializer.data)
 
     def put(self, request, pk):
