@@ -7,10 +7,10 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = (
             # 1. 하나씩 지정해도 되고
-            # "name",
-            # "kind",
+            "name",
+            "kind",
             # 2. 전체를 지정해도 되고
-            "__all__"
+            # "__all__"
         )
 
         # 3. Exclude 를 사용해도 됨
