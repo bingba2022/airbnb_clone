@@ -41,5 +41,3 @@ class RoomDetailSerializer(ModelSerializer):
         fields = "__all__"
         depth = 1
 
-    def create(self, validated_data):
-        return Room.objects.create(**validated_data)

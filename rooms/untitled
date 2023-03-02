@@ -5,9 +5,9 @@
     "price": 2000,
     "rooms": 5,
     "toilets": 3,
-    "category": {"name":"lalalla", "kind": "rooms"},
-    "amenities": [{"name" : "kfjdlkjfs", "description":"slfksjlkd"}],
     "description": "DRF is Great",
     "address": "Seoul, Korea",
     "pet_friendly": true,
+    "category":3,
+    "amenities" : [1,2,3,4],
     "kind": "entire_place"
